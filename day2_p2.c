@@ -37,9 +37,7 @@ int main(int argc, char *argv[]) {
         green = 0,
         current_number = 0;
 
-    char *c = input;
-
-    c = strchr(c, ':') + 1;
+    char *c = strchr(input, ':') + 1;
 
     while(c && c < input + size) {
         if(*c == '\n') {

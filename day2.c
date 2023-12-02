@@ -32,32 +32,30 @@ int main(int argc, char *argv[]) {
 
 
     int sum = 0,
-        game = 0,
+        game = 1,
         possible = 1,
         current_number = 0;
 
-    char *c = input;
+    char *c = strchr(input, ':');
 
-    while(c < input + size) {
-        if(*c == '\n' || c == input) {
+    while(c && c < input + size) {
+        if(*c == '\n') {
             if(possible == 1 && game)
                 sum += game;
 
-            c += sizeof("Game");
+            game++;
 
-            if(c > input + size)
-                break;
-
-            game = atoi(c);
-
-            c = strchr(c, ' ') + 1;
-
+            c = strchr(c, ':');
             possible = 1;
-            continue;
 
+            continue;
         }
 
-        if(*c == ';' || *c == ',' || *c == ' ') {
+        if(*c == ';'
+            || *c == ','
+            || *c == ' '
+            || *c == ':') {
+
             c++;
             continue;
         }
