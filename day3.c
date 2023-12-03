@@ -74,7 +74,7 @@ int main(int argc, char *argv[]) {
 
     while(c && c < input + size) {
 
-        if(*c == '.' || *c == '\n' || *c == '.')
+        if(*c == '.' || *c == '\n')
             goto next;
 
         if(!IS_NUM(*c)) {

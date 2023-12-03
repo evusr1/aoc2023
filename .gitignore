@@ -1,3 +1,4 @@
 *.o
 boilerplate.c
 *.txt
+*input
