@@ -34,7 +34,6 @@ int main(int argc, char *argv[]) {
     if(argc < 2) {
         printf("%s <input_file>\n", argv[0]);
         goto error;
-
     }
 
     FILE *file = fopen(argv[1], "r");
@@ -59,18 +58,12 @@ int main(int argc, char *argv[]) {
 
     int sum = 0;
     int pitch = 0;
-    int part = 0;
-
     char *c = input;
 
-
     while(pitch < size) {
-        if(c[pitch]=='\n')
+        if(c[pitch++]=='\n')
             break;
-        pitch++;
     }
-
-    pitch++;
 
     while(c && c < input + size) {
 
@@ -90,7 +83,6 @@ int main(int argc, char *argv[]) {
                     }
                 }
             }
-
             if(amount==2)
                 sum += prod_temp;
         }
@@ -106,4 +98,3 @@ next:
 error:
     return 1;
 }
-
