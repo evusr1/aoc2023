@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdint.h>
+#include <math.h>
+
 
 
 int main(int argc, char *argv[]) {
@@ -72,7 +74,21 @@ int main(int argc, char *argv[]) {
             answer++;
     }
 
-    printf("The answer is %lu\n", answer);
+    printf("(bruteforce)The answer is %lu\n", answer);
+
+    /*
+     * race_distance < (race_time - push_time) * push_time
+     * race_time*push_time - push_time^2 - race_distance = 0
+     * push_time^2 - race_time*push_time + race_distance
+     * race_time+/-sqrt(race_time^2 - 4(1)(race_distance)) / 2 (1)
+     */
+
+    double sq = sqrt(race_time*race_time-4*(race_distance - 1)) + 1;
+    double upper = (race_time + sq)/2;
+    double lower = (race_time - sq)/2;
+
+    printf("(quadratic)The answer is %d\n", abs(upper - lower));
+
 
     free(input);
     return 0;
